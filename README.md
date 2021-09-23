@@ -1,4 +1,6 @@
-<<<<<<< HEAD
+- Anggie Tamara
+- 1917051006
+
 # web-lanjut
 =======
 # CodeIgniter 4 Application Starter
