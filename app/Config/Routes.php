@@ -24,6 +24,7 @@ $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 $routes->setAutoRoute(true);
 
+
 /*
  * --------------------------------------------------------------------
  * Route Definitions
@@ -43,7 +44,7 @@ $routes->get('/', function () {
 });
 
 $routes->get('/posts', 'PostController::index');
-
+$routes->get('/admin', 'Templating::index');
 $routes->get('/about', function () {
 	$data = [
 		'title' => "Blog - About"
