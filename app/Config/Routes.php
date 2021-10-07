@@ -7,8 +7,7 @@ $routes = Services::routes();
 
 // Load the system's routing file first, so that the app and ENVIRONMENT
 // can override as needed.
-if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
-{
+if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
 	require SYSTEMPATH . 'Config/Routes.php';
 }
 
@@ -43,6 +42,8 @@ $routes->get('/', function () {
 	echo view('layouts/footer');
 });
 
+$routes->get('/register', 'Templating::register');
+$routes->post('/save', 'Templating::save');
 $routes->get('/posts', 'PostController::index');
 $routes->get('/admin', 'Templating::index');
 $routes->get('/about', function () {
@@ -67,7 +68,6 @@ $routes->get('/about', function () {
  * You will have access to the $routes object within that file without
  * needing to reload it.
  */
-if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php'))
-{
+if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
 	require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }
