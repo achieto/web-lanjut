@@ -269,7 +269,12 @@
                                 <div class="col-md-8">
                                     <label for="deskripsi">Deskripsi Postingan</label>
                                     <br>
-                                    <textarea name="deskripsi" id="deskripsi"></textarea>
+                                    <textarea name="deskripsi" id="deskripsi" class="form-control <?= ($validation->hasError('deskripsi')) ? 'is-invalid' : ''; ?>" value="<?= old('deskripsi'); ?>"></textarea>
+                                    <?php if ($validation->hasError('deskripsi')): ?>
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('deskripsi'); ?>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </form>

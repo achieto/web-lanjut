@@ -233,18 +233,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                          <?php foreach ($posts as $i => $post) : ?>
-                            <tr>
-                                <th scope="row"><?= $i + 1; ?></th>
-                                <td><?= $post['judul']; ?></td>
-                                <td><?= $post['slug']; ?></td>
-                                <td><?= $post['author']; ?></td>
-                                <td><?= $post['kategori']; ?></td>
-                                <td>
-                                    <a href="/posts/edit/<?= $post['slug']; ?>" class="btn btn-sm btn-warning me-1"><i class="fas fa-edit"> Edit</i></a>
-                                    <a href="/posts/delete/<?= $post['slug']; ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"> Delete</i></a>
-                                </td>
-                            </tr>
+                            <?php foreach ($posts as $i => $post) : ?>
+                                <tr>
+                                    <th scope="row"><?= $i + 1; ?></th>
+                                    <td><?= $post['judul']; ?></td>
+                                    <td><?= $post['slug']; ?></td>
+                                    <td><?= $post['author']; ?></td>
+                                    <td><?= $post['kategori']; ?></td>
+                                    <td>
+                                        <a href="<?= base_url('/admin/posts/edit/' . $post['slug']) ?>" class="btn btn-sm btn-warning me-1"><i class="fas fa-edit"> Edit</i></a>
+                                        <form action="/admin/posts/delete/<?= $post['slug']; ?>" method="post" class="d-inline">
+                                            <?= csrf_field(); ?>
+                                                <input type="hidden" name="_method" value="Delete">
+                                                <button type="submit" class="btn btn-sm btn-danger me-1" onclick="return confirm('Apakah anda yakin menghapus Post ini ?'); "><i class="fas fa-trash"> Delete</i></button>
+                                        </form>
+                                    </td>
+                                </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
